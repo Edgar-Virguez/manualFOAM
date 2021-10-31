@@ -1,0 +1,32 @@
+%%%% ------------------------------------------------------------------
+%%%% PORTADA DEL MANUAL DE TRABAJO
+%%%% ------------------------------------------------------------------
+
+\begin{titlepage}
+	\begin{tikzpicture}[remember picture, overlay, shift=(current page.south west)]
+		\def\x{0.8}
+		\begin{scope}[x={(current page.south east)}, y={(current page.north west)}]
+			
+			%%%% Fondo general del documento
+			\node[] at (current page.center) {\includegraphics[scale=1.01]{Imagenes/bgManual}};
+			
+			%%%% Ubicación de los títulos del manual
+			\node[font=\firabook\bfseries\fontsize{40}{41}\selectfont, text=white, anchor=north west, align=flush left, text width=14cm] (title) at (0.04, 0.985) {\MakeUppercase{Dinámica de Fluidos Computacional:}}; 
+			
+			%	\draw[white, line width=5pt] ([xshift=-3.75cm, yshift=-0.35cm]title.south east) -- ([xshift=-0.5cm, yshift=-0.35cm]title.south west);
+			
+			\node[font=\fontsize{25}{26}\selectfont\itshape, text=white, anchor=north west, text width=8cm, align=flush left] at ([yshift=-0.35cm]title.south west) {Teoría y manejo de OpenFOAM};
+			
+			%%%% Adición de logo de la UD en la parte inferior
+			\node [anchor=south west] (logoUD) at (0.005, 0.005) {\includegraphics[width=1.25cm]{Imagenes/logoUDRojo}};
+			
+			\node [anchor=west, font=\bfseries\footnotesize, align=flush left, inner sep=0pt, text=color1, scale=\x] (nameUp) at ([yshift=0.3cm]logoUD.east) {UNIVERSIDAD DISTRITAL};
+			\node [anchor=north west, font=\bfseries\fontsize{7.75}{8}\selectfont, inner sep=0pt, align=flush left, text=color1, scale=\x] (nameBelow) at ([yshift=-1.5pt]nameUp.south west) {FRANCISCO JOSÉ DE CALDAS};
+			
+			\draw[color1, line width=0.5pt, scale=\x] ([yshift=-1.5pt]nameBelow.south west) -- ([yshift=-1.5pt, xshift=0.25cm]nameBelow.south east);
+			
+			\node [font=\bfseries\fontsize{6.5}{7}\selectfont, inner sep=0pt, align=flush left, text=color1, text width=4cm, anchor=north west, scale=\x] (facultad) at ([yshift=-5pt]nameBelow.south west) {Facultad del Medio Ambiente y Recursos Naturales};
+			
+		\end{scope}
+	\end{tikzpicture}
+\end{titlepage}
