@@ -29,8 +29,9 @@
 		\definecolor{grisClaro}{RGB}{180, 180, 190} % <-- Color gris claro
 
 
+
 %%%% ----------------------------------------------------------------------
-%%%% 1. PAQUETES DE CONFIGURACIÓN DE PÁGINA
+%%%% 1. PAQUETES DE CONFIGURACIÓN GENERALES DEL DOCUMENTO
 %%%% ----------------------------------------------------------------------
 
 %%% Definición de codificación
@@ -52,14 +53,113 @@
 %%% Configuración de los márgenes de página
 	\usepackage[margin=1in]{geometry}
 
-%%% Configuración del espaciado de renglones en zonas específicas y global
+%%% Configuración del espaciado de renglones en zonas específicas
 	\usepackage{setspace} 
-		\renewcommand{\baselinestretch}{1.15} % <--- Configuración global
-%		\renewcommand{\parskip}{12}
-		\setlength\parskip{12pt}
 
 %%% Adición para cajas de colores y teoremas
 	\usepackage{tcolorbox}
+	
+%%% Ajuste de la tabla de contenidos
+	\usepackage{titletoc}
+
+%%%		Configuraciones generales
+		\contentsmargin{0cm}
+
+%%%		Configuración de capítulos
+		\titlecontents{chapter}[0.65cm]
+		{\addvspace{10pt} \thispagestyle{empty}
+			\begin{tikzpicture}[remember picture, overlay]
+				\draw[fill=color1, draw=color1!80] (-4, -0.15) rectangle (-0.9, 0.65);
+				\draw[fill=color1!60, draw=color1!60] (-3.175, -0.16) -- (-2.54, -0.5) -- (-2.54, -0.16) -- cycle;
+				\pgftext[left, x=-2.9cm, y=0.2cm]{\color{white}\large\sc\bfseries\sffamily CAP.\ \thecontentslabel};
+			\end{tikzpicture}\hspace{-0.65cm}\color{color1}\large\bfseries} % <-- Configuración del estilo del label de Chapter
+		{\color{color1}\large\bfseries\sffamily\uppercase} 
+		{}
+		{\;\titlerule\;\large\sc\bfseries\sffamily Pág. \thecontentspage
+			\begin{tikzpicture}[remember picture, overlay]
+				\draw[fill=color1!25,draw=color1!70] (2pt,0) rectangle (6,0.1pt);
+		\end{tikzpicture}}%
+
+%%%		Configuración de sección
+		\titlecontents{section}[2.4pc]
+		{\addvspace{-5pt}}
+		{\bfseries\sffamily\color{color1}\contentslabel[\thecontentslabel]{2.4pc}}
+		{}
+		{\dotfill\small \thecontentspage}
+		[]
+
+%%%		Configuración de subsección		
+		\titlecontents{subsection}[4pc]
+		{\addvspace{-5pt}}
+		{\contentslabel[\thecontentslabel]{2.4pc}}
+		{}
+		{\dotfill\small \thecontentspage}
+		[]
+
+%%% 	Nueva definición del título de Tabla de Contenidos
+		\makeatletter
+		\renewcommand{\tableofcontents}{%
+			\chapter*{%
+				\vspace*{-60\p@}%
+				\begin{tikzpicture}[remember picture, overlay, font=\sffamily]%
+					\pgftext[right, x=16.5cm, y=0.2cm]{\color{color1}\Huge\sc\bfseries \contentsname};
+					\draw[fill=color1, draw=color1!30] (13, -0.75) rectangle (20, 1);
+					\clip (13,-0.75) rectangle (20, 1);
+					\pgftext[right, x=16.5cm, y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};
+			\end{tikzpicture}}%
+			\@starttoc{toc}}
+		\makeatother	
+
+%%%		Configuración de la lista de figuras
+		\titlecontents{figure}[2.5cm] % <--- Espaciado izquierdo
+		{\addvspace{0pt}\thispagestyle{empty}
+			\begin{tikzpicture}[remember picture, overlay]
+				\node [font=\bfseries\firalining, text=color1] at (-1.5, 0.15) {Figura \thecontentslabel};				
+			\end{tikzpicture}	
+		} % <--- Configuración del todo contenido
+		{} % <--- Configuración del estilo de letra del nombre de la figura
+		{}
+		{{\dotfill\small} \itshape Pág. \thecontentspage} % <--- Formato para conexión label ---- numPage
+		[]
+
+%%% 	Nueva definición del título de lista de figuras
+		\makeatletter
+		\renewcommand{\listoffigures}{%
+			\chapter*{\vspace*{-60\p@}%
+				\begin{tikzpicture}[remember picture, overlay, font=\sffamily]%
+					\pgftext[right, x=16.5cm, y=0.2cm]{\color{color1}\Huge\sc\bfseries \listfigurename};
+					\draw[fill=color1, draw=color1!30] (12.675, -0.75) rectangle (20, 1);
+					\clip (12.675, -0.75) rectangle (20, 1);
+					\pgftext[right, x=16.5cm, y=0.2cm]{\color{white}\Huge\sc\bfseries \listfigurename};
+			\end{tikzpicture}}%
+			\@starttoc{lof}}
+		\makeatother
+
+%%%		Configuración de la lista de tablas
+		\titlecontents{table}[2.5cm] % <--- Espaciado izquierdo
+		{\addvspace{0pt}\thispagestyle{empty}
+			\begin{tikzpicture}[remember picture, overlay]
+				\node [font=\bfseries\firalining, text=color1] at (-1.5, 0.15) {Tabla \thecontentslabel};				
+			\end{tikzpicture}	
+		} % <--- Configuración del todo contenido
+		{} % <--- Configuración del estilo de letra del nombre de la figura
+		{}
+		{{\dotfill\small} \itshape Pág. \thecontentspage} % <--- Formato para conexión label ---- numPage
+		[]
+
+%%% 	Nueva definición del título de lista de figuras
+		\makeatletter
+		\renewcommand{\listoftables}{%
+			\chapter*{\vspace*{-60\p@}%
+				\begin{tikzpicture}[remember picture, overlay, font=\sffamily]%
+					\pgftext[right, x=16.5cm, y=0.2cm]{\color{color1}\Huge\sc\bfseries \listtablename};
+					\draw[fill=color1, draw=color1!30] (13.175, -0.75) rectangle (20, 1);
+					\clip (13.175, -0.75) rectangle (20, 1);
+					\pgftext[right, x=16.5cm, y=0.2cm]{\color{white}\Huge\sc\bfseries \listtablename};
+			\end{tikzpicture}}%
+			\@starttoc{lot}}
+		\makeatother
+	
 
 
 %%%% ----------------------------------------------------------------------
@@ -72,6 +172,7 @@
 	\usepackage{cancel}
 	\usepackage{amsmath}
 	\usepackage{latexsym}
+
 
 
 %%%% ----------------------------------------------------------------------
@@ -112,12 +213,9 @@
 %%% Adición de color a las tablas, tanto en líneas (hline), como también a las celdas y filas de una tabla
 	\usepackage{colortbl}
 
-%%% Ajuste del espaciado en tablas, y el color de las líneas de separación en tablas
-	\renewcommand{\arraystretch}{1.4}
-	\arrayrulecolor{color1}
-
 %%% Adición de notas en las tablas
 	\usepackage[flushleft]{threeparttable}
+
 
 
 %%%% ----------------------------------------------------------------------
@@ -125,17 +223,30 @@
 %%%% ----------------------------------------------------------------------
 
 %%% Paquete NatBIB
-\usepackage{natbib}
+	\usepackage{natbib}
 
 %%% Paquete cite
-\usepackage{cite}
+	\usepackage{cite}
 
 
-\pagestyle{empty}
+
 
 %%%% ----------------------------------------------------------------------
 %%%% 5. REDEFINICIÓN DE NUEVOS COMANDOS PARA ESTILIZACIÓN
 %%%% ----------------------------------------------------------------------
+
+%%% Configuración del estilo general de páginas
+	\pagestyle{empty}
+
+%%% Configuración de espaciado en los párrafos
+	\renewcommand{\baselinestretch}{1.15} % <--- Configuración global
+	
+%%% Configuración de espaciado entre párrafos
+	\setlength\parskip{12pt}
+
+%%% Ajuste del espaciado en tablas, y el color de las líneas de separación en tablas
+	\renewcommand{\arraystretch}{1.4}
+	\arrayrulecolor{color1}
 
 \usepackage{lipsum}
 
@@ -145,23 +256,45 @@
 
 \begin{document}
 	
+%%% -----------------------------------------------------------------------
+%%% Ajuste de nombres de tablas
+%%% -----------------------------------------------------------------------
+	\renewcommand{\tablename}{Tabla}
+	\renewcommand{\listtablename}{Índice de tablas}
+	
+	
 	
 %%% -----------------------------------------------------------------------
 %%% Adición de portada, TOC, TOT, TOF
 %%% -----------------------------------------------------------------------
+	
+	\frontmatter
 
 	\include{Secciones/portadaMain}
 	
-%	\tableofcontents % <-- Emplear cuando se tengan secciones realizadas
-%	\listoftables % <-- Emplear para cuando se tengan tablas realizadas
-%	\listoffigures % <-- Emplear para cuando se tengan figuras realizadas
+	\tableofcontents % <-- Emplear cuando se tengan secciones realizadas
+	\listoftables % <-- Emplear para cuando se tengan tablas realizadas
+	\listoffigures % <-- Emplear para cuando se tengan figuras realizadas
 
+
+	\mainmatter
 
 %%% ----------------------------------------------------------------------		
 %%% SECCIÓN: INTRODUCCIÓN
 %%% ----------------------------------------------------------------------
 	
-	\include{Secciones/Intro}
+	\section{Introducción}
+	
+	\lipsum[3-10]
+	
+	\begin{figure}[H]
+	\includegraphics[width=0.75\textwidth]{Imagenes/logoUDRojo}
+	\caption{Logo de la Universidad Distrital Francisco José de Caldas en color rojito, más algo de texto para mirar el formato con figuras de grandes ``captions''}
+	\end{figure}
+	
+	
+	
+	
 	
 
 

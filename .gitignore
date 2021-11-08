@@ -3,3 +3,6 @@
 Manual_main.pdf
 *.synctex.gz
 Imagenes/bgManualUnCompressed.pdf
+*.lot
+*.lof
+*.toc
