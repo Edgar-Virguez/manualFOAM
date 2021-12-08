@@ -1,22 +1,12 @@
-\chapter{Conceptos Básicos} %%% <--- Podríamos mejor dejar como título "DINÁMICA COMPUTACIONAL DE FLUIDOS", porque englobaría todo eso.
+\chapter{Conceptos Básicos}
 
 \section{Modelos matemáticos}
-<<<<<<< HEAD
 	\subsection{Descripción Euleriana}
 		\subsubsection{Flujos incompresibles}
 	\subsection{Flujos Compresibles}%Descripción Lagrangiana		
 	\subsection{Ecuaciones de Gobierno}
 	\subsection{Flujos Multifasicos}%General de casos, agua aire entre otros ejemplos, tensión superficial. 
 	%--------------------------------------------------------------
-=======
-	\subsection{Navier-Stokes}
-		%Descripción lagrangiana <-- Esta parte la podemos abordar, pero sería que se aplique para temas de transporte de sedimentos, no cree?
-		%Descripción Euleriana
-		%Para flujos incopresibles
-		%Para flujos compresibles <--- Hablamos de dispersión de contaminantes atmosféricos o como tal combustión, sería mirar eso para mayor detalle y no andar perdidos a la hora de buscar información.
-		%promediado de Reynolds RANS
-	\subsection{Volumen de Fluido (VOF)} %%% <--- Esta parte de acá no me gustaría dejarla acá como tal, porque siendo que sería mejor dejar esto en un apartado que se llame "Flujos multifásicos", ahí podríamos hablar no solo de VoF sino también de los otros con los que cuenta OpenFOAM en el directorio de SRC/TUTORIALS/multiphase
->>>>>>> 68a15cd18c41d36116a34f2ac57b053d7b1f3157
 	
 \section{Discretización}
 %Intoducción: Método de Volumen Finito
@@ -24,7 +14,6 @@
 	\subsection{Discretización espacial}
 		\subsubsection{Tipos de Mallas}
 	\subsection{Condiciones de Borde}
-<<<<<<< HEAD
 	\subsection{Propiedades de la solución numérica y de las ecuaciones de discretización}
 		\subsubsection{Consistencia}
 		\subsubsection{Estabilidad(Courant field)}
@@ -41,20 +30,3 @@
 		\subsubsection{Otros metodos de dos ecuaciones}
 	
 	
-=======
-\section{Algoritmos de Solución} % <-- El tema de esta parte es que se convierte en algo más técnico que como tal un manual, sería mejor dejar esta parte para otro documento, porque esto en mi opinión sería algo muy técnico, no sé, si quiere lo abordamos en la reunión de una manera más detallada, le parece?
-	\subsubsection{Iterativos}
-	\subsubsection{No iterativos}
-	\subsection{Soluciona dores lineales}
-
-\section{Turbulencia}
-	\subsubsection{DNS}
-	\subsection{Métodos de dos ecuaciones} %%% Acá podríamos referirnos directamente con el libro de Wilcox 2006, y ahí aparecen más tipos de ecuaciones de turbulencia, las de dos ecuaciones, la de una ecuación y las de varias ecuaciones, pero entonces creería que sería mejor cuáles son las ecuaciones RANS que tiene OpenFOAM y a partir de allí dar un mejor detalle de esos mismos, no le parece?
-	
-\section{Campo de Courant}
-
-%%% CONSIDERACIONES GENERALES
-	%%% 1. Deberíamos dejar un apartado que se llame "Estabilidad, convergencia y precisión de modelos en CFD", no cree? Y ahí podríamos mirar la parte de número de Courant y la convergencia en los método iterativos.
-	
-	%%% 2. Otra cosa que estaba pensando era en colocar un apartado después donde se hable del PostProcessing, porque es necesario, por ejemplo, realizar gráficas de perfiles de velocidad, lineas de flujo, animaciones y demás cositas, y estaba pensando en hacer otro manual donde se hable a profundidad el manejo de Paraview como herramienta de código y cómo poder programar dentro de la shell de python que está dispuesta en Paraview, eso lo he estado mirando últimamente y está re bueno jajajaja
->>>>>>> 68a15cd18c41d36116a34f2ac57b053d7b1f3157
